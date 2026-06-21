@@ -1,10 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-@keyframes slideUpIn {
+@keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(100px);
+        transform: translateY(14px);
     }
     to {
         opacity: 1;
@@ -12,88 +11,116 @@
     }
 }
 
-body{
-    /* background-color: black; */
-    background-image: linear-gradient(-180deg, black, 80%, rgb(77, 77, 77));
-    color: white;
-    font-family: 'Google Sans', sans-serif;
+@keyframes growLine {
+    from { width: 0; }
+    to { width: 36px; }
+}
+
+:root {
+    --bg: #FAF8F5;
+    --ink: #1C1B1A;
+    --ink-soft: #8A8580;
+    --sage: #7C9885;
+    --card: #FFFFFF;
+    --line: #ECE8E2;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--ink);
     margin: 0;
     padding: 0;
 }
 
-* {
-    font-family: 'Google Sans', sans-serif;
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
-.container{
-    min-height: 100vh;
+.container {
+    height: 100dvh;
     width: 100%;
-    max-width: 500px;
+    max-width: 420px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 28px 22px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    overflow: hidden;
 }
 
-/* Mobile first - base styles */
-@media (max-width: 768px) {
-    .container {
-        width: 100%;
-        max-width: 100%;
-        padding: 20px;
-        min-height: auto;
-    }
-}
-
-/* Tablet and up */
 @media (min-width: 769px) {
     .container {
-        width: 500px;
+        max-width: 420px;
+        height: 100dvh;
     }
 }
 
-
-.photo{
-    margin: 20px;
-    padding: 10px;
+/* ---------- Photo / identity block ---------- */
+.photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    flex-shrink: 0;
+    animation: fadeUp 0.6s ease-out;
+}
+
+#pp {
+    width: clamp(76px, 18vw, 96px);
+    height: clamp(76px, 18vw, 96px);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--card);
+    box-shadow: 0 4px 16px rgba(28, 27, 26, 0.10);
 }
 
 .photo .name {
-    margin: 15px 0 5px 0;
-    font-size: 24px;
+    margin: 14px 0 0 0;
+    font-family: 'Google Sans', sans-serif;
+    font-size: 21px;
     font-weight: 700;
-    color: white;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+}
+
+.name-underline {
+    height: 3px;
+    width: 36px;
+    margin: 7px 0 9px 0;
+    background-color: var(--sage);
+    border-radius: 2px;
+    animation: growLine 0.7s ease-out 0.3s both;
 }
 
 .photo .bio {
     margin: 0;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 400;
-    color: #666;
+    color: var(--ink-soft);
+    line-height: 1.5;
 }
 
-#pp{
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    
-}
-
-.links{
-    width: 85%;
-    max-width: 350px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: black;
-    
-    border-radius: 30px;
+/* ---------- Links ---------- */
+.links {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-height: 0;
 }
 
 .links ul {
@@ -102,56 +129,80 @@ body{
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 11px;
+    width: 100%;
 }
 
-/* General Link Item Styling */
 .link-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px 16px;
-    border-radius: 30px;
-    transition: all 0.3s ease;
+    gap: 14px;
+    padding: 13px 18px;
+    border-radius: 16px;
+    background-color: var(--card);
+    border: 1px solid var(--line);
+    box-shadow: 0 1px 3px rgba(28, 27, 26, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     cursor: pointer;
-    background-color: black;
-    border: 0.2px solid rgb(34, 34, 34);
-    animation: slideUpIn 0.8s ease-out;
     width: 100%;
-    box-sizing: border-box;
+    animation: fadeUp 0.5s ease-out both;
 }
 
-.link-item:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.link-item:nth-child(1) { animation-delay: 0.08s; }
+.link-item:nth-child(2) { animation-delay: 0.14s; }
+.link-item:nth-child(3) { animation-delay: 0.20s; }
+.link-item:nth-child(4) { animation-delay: 0.26s; }
+.link-item:nth-child(5) { animation-delay: 0.32s; }
+
+.link-item:hover,
+.link-item:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(28, 27, 26, 0.08);
+    border-color: var(--sage);
+}
+
+.link-item .icons {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    object-fit: cover;
 }
 
 .link-item a {
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14.5px;
     font-weight: 500;
-    transition: all 0.3s ease;
+    color: var(--ink);
     flex: 1;
+    outline: none;
 }
 
-.link-item .icons {
-    width: 28px;
-    height: 28px;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
+a:focus-visible {
+    outline: 2px solid var(--sage);
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
-a{
-    color: white;
-    font-family: 'Google Sans';
-}
-
+/* ---------- Footer ---------- */
 footer {
-    margin-top: 40px;
-    margin-bottom: 20px;
+    flex-shrink: 0;
+    padding-top: 18px;
     text-align: center;
-    color: black;
-    font-family: 'Google Sans', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
+    color: var(--ink-soft);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+/* ---------- Small phone safety net ---------- */
+@media (max-height: 640px) {
+    .container { padding: 18px 20px; }
+    #pp { width: 64px; height: 64px; }
+    .photo .name { font-size: 18px; margin-top: 10px; }
+    .photo .bio { font-size: 12.5px; }
+    .link-item { padding: 10px 16px; }
+    .link-item a { font-size: 13.5px; }
+    .links ul { gap: 8px; }
+    footer { padding-top: 10px; font-size: 11px; }
 }
