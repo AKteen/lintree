@@ -15,9 +15,9 @@ const Linkspage = () => {
                 <h2 className="name">_alwaysak</h2>
                 <div className="name-underline"></div>
                 <p className="bio">
+                    
                     <span>Software developer</span>
-                    <span className="bio-dot"></span>
-                    <span>Marathon training</span>
+                    
                 </p>
             </div>
 
