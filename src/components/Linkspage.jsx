@@ -41,7 +41,7 @@ const Linkspage = () => {
                         <span className="icon-wrap">
                             <img src="/a.png" className="icons" alt="Portfolio" />
                         </span>
-                        <a href="https://adityakulkarniportfolio.vercel.app/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+                        <a href="https://newportfolio-jade-six.vercel.app/" target="_blank" rel="noopener noreferrer">Portfolio</a>
                         <Chevron />
                     </li>
                     <li id="strava-link" className="link-item strava">
